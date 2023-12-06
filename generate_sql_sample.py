@@ -13,35 +13,35 @@ conn.execute('''CREATE TABLE IF NOT EXISTS pet_owners
                 Name TEXT NOT NULL,
                 Pet TEXT NOT NULL);''')
 
-"""
-선택된 코드는 Python에서 SQLite 연결 객체의 execute 메서드를 사용하여 SQL 명령을 실행하는 부분입니다. 
-이 명령은 SQLite 데이터베이스에 새 테이블을 생성합니다(이미 존재하지 않는 경우).
+# """
+# 선택된 코드는 Python에서 SQLite 연결 객체의 execute 메서드를 사용하여 SQL 명령을 실행하는 부분입니다. 
+# 이 명령은 SQLite 데이터베이스에 새 테이블을 생성합니다(이미 존재하지 않는 경우).
 
-코드의 각 부분이 하는 일은 다음과 같습니다:
-CREATE TABLE IF NOT EXISTS pet_owners: 이 부분의 명령은 데이터베이스에 pet_owners라는 새 테이블을 생성합니다. 
-단, 같은 이름의 테이블이 이미 존재하지 않는 경우에만 생성합니다. 
-IF NOT EXISTS 절은 테이블이 이미 존재하는 경우 오류가 발생하는 것을 방지합니다.
-(ID INT PRIMARY KEY NOT NULL, Name TEXT NOT NULL, Pet TEXT NOT NULL): 이 부분의 명령은 테이블의 열을 정의합니다. 
-세 개의 열이 있습니다: ID, Name, Pet. 
-ID 열의 유형은 INT이며, 이는 테이블의 기본 키로, 고유한 값을 가져야 합니다. 
-Name과 Pet 열의 유형은 TEXT입니다. 각 열에 대한 NOT NULL 제약 조건은 열이 항상 값을 가져야 함을 의미합니다. 
-이는 열을 비워 둘 수 없으며 NULL로 설정할 수 없습니다.
-conn.execute(...): 이 코드 줄은 SQL 명령을 실행합니다. 
-SQLite 연결 객체의 execute 메서드는 SQL 명령을 실행하는 데 사용됩니다.
+# 코드의 각 부분이 하는 일은 다음과 같습니다:
+# CREATE TABLE IF NOT EXISTS pet_owners: 이 부분의 명령은 데이터베이스에 pet_owners라는 새 테이블을 생성합니다. 
+# 단, 같은 이름의 테이블이 이미 존재하지 않는 경우에만 생성합니다. 
+# IF NOT EXISTS 절은 테이블이 이미 존재하는 경우 오류가 발생하는 것을 방지합니다.
+# (ID INT PRIMARY KEY NOT NULL, Name TEXT NOT NULL, Pet TEXT NOT NULL): 이 부분의 명령은 테이블의 열을 정의합니다. 
+# 세 개의 열이 있습니다: ID, Name, Pet. 
+# ID 열의 유형은 INT이며, 이는 테이블의 기본 키로, 고유한 값을 가져야 합니다. 
+# Name과 Pet 열의 유형은 TEXT입니다. 각 열에 대한 NOT NULL 제약 조건은 열이 항상 값을 가져야 함을 의미합니다. 
+# 이는 열을 비워 둘 수 없으며 NULL로 설정할 수 없습니다.
+# conn.execute(...): 이 코드 줄은 SQL 명령을 실행합니다. 
+# SQLite 연결 객체의 execute 메서드는 SQL 명령을 실행하는 데 사용됩니다.
 
-요약하면, 이 코드는 SQLite 데이터베이스에 pet_owners라는 새 테이블을 생성하며, 
-이 테이블에는 세 개의 열(ID, Name, Pet)이 있습니다. 
-단, 테이블이 이미 존재하지 않는 경우에만 생성합니다.
-"""
-
-
-# # 데이터 삽입
-# data = [(1, "John", "Dog"),
-#         (2, "Jane", "Cat"),
-#         (3, "Mike", "Bird")]
+# 요약하면, 이 코드는 SQLite 데이터베이스에 pet_owners라는 새 테이블을 생성하며, 
+# 이 테이블에는 세 개의 열(ID, Name, Pet)이 있습니다. 
+# 단, 테이블이 이미 존재하지 않는 경우에만 생성합니다.
+# """
 
 
-data = [(4, "John2", "Dog2")]
+# 데이터 삽입
+data = [(1, "John", "Dog"),
+        (2, "Jane", "Cat"),
+        (3, "Mike", "Bird")]
+
+
+# data = [(4, "John2", "Dog2")]
 
 conn.executemany("INSERT INTO pet_owners (ID, Name, Pet) VALUES (?, ?, ?)", data)
 """
